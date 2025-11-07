@@ -1,0 +1,46 @@
+
+🧩 SRS — Calculadora de Nota
+
+1. index.html (Estructura principal del proyecto)
+-----------------------------------------------
+<!DOCTYPE html>: Indica que el documento está escrito en HTML5.
+<html lang="es">: Define el idioma principal de la página (español).
+<head>: Contiene metadatos y configuraciones (charset, viewport, título, enlace al CSS).
+<body>: Contiene el contenido visible para el usuario.
+<div class="container">: Crea un contenedor central donde se agrupan los elementos de la calculadora.
+
+Dentro del contenedor:
+- <h2>: Título principal “Calculadora de Nota”.
+- <input type="number">: Campos para ingresar las notas del primer y segundo corte.
+- <button onclick="calcular()">: Ejecuta la función JavaScript calcular().
+- <p id="resultado">: Muestra la nota calculada.
+- <p id="mensajeError">: Muestra advertencias o errores.
+
+<script src="JavaScrip.js"></script>: Conecta el archivo JavaScript que maneja la lógica.
+
+2. style.css (Estilos visuales del proyecto)
+--------------------------------------------
+body: Define fuente, color de fondo, y centra el contenido en la pantalla.
+.container: Caja principal con fondo blanco, sombras, bordes redondeados y texto centrado.
+h2: Título con color gris oscuro.
+input: Campos con bordes azules, esquinas redondeadas y texto centrado.
+button: Botón morado con texto blanco, que cambia a verde al pasar el cursor (hover).
+#resultado: Texto en negrita y gris para mostrar el resultado final.
+#mensajeError: Texto rojo y pequeño para los mensajes de error.
+
+3. JavaScrip.js (Lógica del cálculo)
+------------------------------------
+Función calcular(): Se ejecuta al presionar el botón Calcular.
+
+Pasos principales:
+1. Obtiene las notas del usuario con document.getElementById().
+2. Limpia mensajes previos.
+3. Convierte los valores a decimales con parseFloat().
+4. Verifica errores: campos vacíos, notas negativas o mayores a 5.
+5. Calcula la nota parcial:
+   const notaLlevas = (n1 * 0.33) + (n2 * 0.33);
+   const notaNecesaria = (3.0 - notaLlevas) / 0.34;
+6. Muestra resultados:
+   - Si la nota necesaria es > 5 → imposible aprobar.
+   - Si es < 0 → ya tiene la nota mínima asegurada.
+   - En otro caso → indica cuánto necesita para ganar.
